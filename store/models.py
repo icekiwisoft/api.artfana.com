@@ -6,6 +6,8 @@ class Item(models.Model):
     shortdescription=models.CharField(max_length=200,default="a new awesome artfana item")
     pricing=models.IntegerField(default=0)
     image=models.ImageField(default="noimage.png",upload_to="/item")
+    class Meta:
+        abstract = True
 
 
 # Create your models here.

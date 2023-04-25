@@ -19,6 +19,7 @@ class Message(models.Model):
     def __str__(self) -> str:
         return super().__str__()
     
+    
 class User(AbstractUser):
     pseudo = models.CharField(max_length=100)
     email=models.EmailField(unique=True)
@@ -30,6 +31,9 @@ class User(AbstractUser):
     subsciption=models.IntegerField(default=0)
     bio=models.TextField(default="hello i'm an artfana user")
     sex=models.CharField(max_length=1)
+    following = models.ManyToManyField(
+        "self", blank=True, related_name="followers", symmetrical=False
+    )
 
     def __str__(self) -> str:
         return super().__str__()
